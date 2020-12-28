@@ -1,0 +1,77 @@
+<!--
+  Copyright 2014 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="pocket-auth">
+    <div id="node-config-pocket-keys">
+        <div class="form-row">
+            <label for="node-config-input-consumerKey"><i class="fa fa-user"></i> Consumer key</label>
+            <input type="text" id="node-config-input-consumerKey" placeholder="Your consumer key">
+        </div>
+        <div class="form-row">
+            <label>&nbsp;</label>
+            <a class="btn" id="node-config-start-auth" href="#" target="_blank">Authenticate</a>
+        </div>
+    </div>
+    <div id="pocket-display" style="display: none;">
+        <div class="form-row">
+            <label for="node-config-input-displayName"><i class="fa fa-user"></i> Name</label>
+            <input type="text" id="node-config-input-displayName">
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('pocket-auth', {
+        category: 'config',
+        defaults: {
+            displayName: { value: "" }
+        },
+        credentials: {
+            displayName: { type: "text" },
+            consumerKey: { type: "password" }
+        },
+        label: function () {
+            return this.displayName || this._("pocket");
+        },
+        exportable: false,
+        oneditprepare: function () {
+            let id = this.id;
+
+            if (this.credentials.has_consumerKey) {
+                $("#pocket-display").show();
+                $("#node-config-input-displayName").val(this.credentials.displayName);
+                $("#node-config-pocket-keys").hide();
+            }
+
+            var callback = location.protocol + "//" +
+                location.hostname +
+                (location.port ? ":" + location.port : "") +
+                location.pathname + "pocket/auth_callback?id=" + id;
+
+            $("#node-config-start-auth").mousedown(function () {
+                let consumerKey = $('#node-config-input-consumerKey').val();
+                var url = '/pocket/auth?id=' + id + '&consumerKey=' + consumerKey + "&callback=" + encodeURIComponent(callback);
+
+                $(this).attr("href", url);
+            });
+        },
+        oneditsave: function () {
+        },
+        oneditcancel: function () {
+
+        }
+    });
+</script>

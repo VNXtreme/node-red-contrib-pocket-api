@@ -1,0 +1,37 @@
+<script type="text/x-red" data-template-name="get-pocket">
+    <div class="form-row">
+        <label for="node-input-pocket"><i class="fa fa-user"></i> Pocket</label>
+        <input type="text" id="node-input-pocket">
+    </div>
+    <!-- <div class="form-row">
+        <label for="node-input-"><i class="fa fa-book"></i> Notebooks</label>
+        <input type="text" id="node-input-pocket">
+    </div> -->
+</script>
+
+<script type="text/x-red" data-help-name="get-pocket">
+    <p>GET.</p>
+    
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('get-pocket', {
+        category: 'box',
+        color: "#EEE",
+        defaults: {
+            pocket: { type: "pocket-auth", required: true },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "pocket.png",
+        align: "left",
+        label: 'Get Pocket',
+        paletteLabel: 'Get Pocket',
+        oneditprepare: function () {
+            
+        },
+        oneditsave: function () {
+            
+        }
+    });
+</script>
