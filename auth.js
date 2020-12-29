@@ -19,7 +19,7 @@ module.exports = function (RED) {
     },
   });
 
-  RED.httpAdmin.get("/red/pocket/auth", async function (req, res) {
+  RED.httpAdmin.get("/pocket/auth", async function (req, res) {
     let id = req.query.id;
     let consumerKey = req.query.consumerKey;
     let callback = req.query.callback;
@@ -42,7 +42,7 @@ module.exports = function (RED) {
     }
   });
 
-  RED.httpAdmin.get("/red/pocket/auth_callback", async function (req, res) {
+  RED.httpAdmin.get("/pocket/auth_callback", async function (req, res) {
     let id = req.query.id;
     if (!id) {
       res.send(RED._("error.none-id"));
