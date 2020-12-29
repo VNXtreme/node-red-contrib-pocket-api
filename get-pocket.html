@@ -13,7 +13,7 @@
         <code>(Only complete matches are returned)</code>
     </div>
     <div class="form-row">
-        <label for="node-input-state"><i class="fa fa-sort"></i> State</label>
+        <label for="node-input-state"><i class="fa fa-filter"></i> State</label>
         <select id="node-input-state" style="width: 70%">
             <option value="unread">Unread</option>
             <option value="archive">Archive</option>
@@ -25,6 +25,8 @@
         <select id="node-input-sort" style="width: 70%">
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
+            <option value="title">Title</option>
+            <option value="site">Site</option>
         </select>
     </div>
     <div class="form-row">
@@ -37,8 +39,42 @@
 </script>
 
 <script type="text/x-red" data-help-name="get-pocket">
-    <p>GET.</p>
-    
+    <p>Get pocket list.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>search
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Search keys</dd>
+
+        <dt>tag
+            <span class="property-type">boolean</span>
+        </dt>
+        <dd>Search by tag_name</dd>
+
+        <dt>sort
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Accept: newest | oldest | title | site</dd>
+
+        <dt>detailType
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Accept: simple | complete</dd>
+
+        <dt>state
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Accept: unread | archive | all. Default is `unread`</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">object</span>
+        </dt>
+        <dd>Default response from API</dd>
+    </dl>
 </script>
 
 <script type="text/javascript">
