@@ -1,11 +1,11 @@
-# node-red-contrib-pocket
+# node-red-contrib-pocket-api
 
 The node using Pocket API.
 
 
 ## Install
 
-npm install node-red-contrib-pocket
+npm install node-red-contrib-pocket-api
 
 
 ## Setup Consumer key
