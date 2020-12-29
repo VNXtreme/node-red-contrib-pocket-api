@@ -18,13 +18,15 @@ module.exports = function (RED) {
       let searchKey = msg.search || n.search,
         useTag = msg.tag || n.tag,
         sort = msg.sort || n.sort,
-        detailType = msg.detailType || n.detailType;
+        detailType = msg.detailType || n.detailType,
+        state = msg.state || n.state || "unread";
 
       let params = {
         consumer_key: this.pocket.credentials.consumerKey,
         access_token: this.pocket.credentials.accessToken,
         sort,
-        detailType
+        detailType,
+        state
       }
 
       if (useTag) {

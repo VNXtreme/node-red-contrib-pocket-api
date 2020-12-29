@@ -13,9 +13,17 @@
         <code>(Only complete matches are returned)</code>
     </div>
     <div class="form-row">
+        <label for="node-input-state"><i class="fa fa-sort"></i> State</label>
+        <select id="node-input-state" style="width: 70%">
+            <option value="unread">Unread</option>
+            <option value="archive">Archive</option>
+            <option value="all">All</option>
+        </select>
+    </div>
+    <div class="form-row">
         <label for="node-input-sort"><i class="fa fa-sort"></i> Sort</label>
         <select id="node-input-sort" style="width: 70%">
-            <option value="newest" selected="true">Newest</option>
+            <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
         </select>
     </div>
@@ -41,6 +49,7 @@
             pocket: { type: "pocket-auth", required: true },
             search: { value: "input" },
             tag: { value: false },
+            state: { value: 'unread' },
             sort: { value: "newest" },
             detailType: { value: "simple" },
         },
