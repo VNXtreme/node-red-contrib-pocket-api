@@ -1,0 +1,15 @@
+{
+  "status": {
+    "initializing": "initializing",
+    "error": "error",
+    "failed": "failed"
+  },
+  "success": {
+    "get-list": "Get list successfully"
+  },
+  "error": {
+    "no-access-token": "No access token",
+    "missing-consumer-key": "Missing Pocket consumer key",
+    "get-list": "Get list error"
+  }
+}

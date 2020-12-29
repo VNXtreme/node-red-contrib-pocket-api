@@ -7,7 +7,7 @@ module.exports = function (RED) {
 
     node.on("input", function (msg) {
       if (!node.credentials || !node.credentials.accessToken) {
-        node.status({ fill: "red", shape: "dot", text: "box.warn.no-credentials" });
+        node.status({ fill: "red", shape: "dot", text: "error.no-access-token" });
         return;
       }
     });
@@ -38,14 +38,14 @@ module.exports = function (RED) {
 
       res.redirect(`https://getpocket.com/auth/authorize?request_token=${requestToken.code}&redirect_uri=${callback}`);
     } catch (error) {
-      console.log("axios err", error.response.statusText);
+      res.send(RED._("error.authorize", { 'err': error.response.statusText }));
     }
   });
 
   RED.httpAdmin.get("/pocket/auth_callback", async function (req, res) {
     let id = req.query.id;
     if (!id) {
-      res.send(RED._("pocket.message.none-id-error"));
+      res.send(RED._("error.none-id"));
     }
     let credentials = RED.nodes.getCredentials(id);
 
@@ -61,12 +61,12 @@ module.exports = function (RED) {
       //set credentials
       credentials.accessToken = data.access_token;
       credentials.displayName = data.username;
-      
+
       RED.nodes.addCredentials(id, credentials);
 
-      res.send(RED._("pocket.message.authorized"));
+      res.send(RED._("message.authorized"));
     } catch (error) {
-      res.send(RED._("pocket.message.authorize-error"));
+      res.send(RED._("error.authorize"));
     }
   });
 };

@@ -3,10 +3,29 @@
         <label for="node-input-pocket"><i class="fa fa-user"></i> Pocket</label>
         <input type="text" id="node-input-pocket">
     </div>
-    <!-- <div class="form-row">
-        <label for="node-input-"><i class="fa fa-book"></i> Notebooks</label>
-        <input type="text" id="node-input-pocket">
-    </div> -->
+    <div class="form-row">
+        <label for="node-input-search"><i class="fa fa-search"></i> Search</label>
+        <input type="text" id="node-input-search">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tag"><i class="fa fa-tag"></i> Search tag</label>
+        <input type="checkbox" id="node-input-tag" style="display: inline-block; width: auto; vertical-align: top;">
+        <code>(Only complete matches are returned)</code>
+    </div>
+    <div class="form-row">
+        <label for="node-input-sort"><i class="fa fa-sort"></i> Sort</label>
+        <select id="node-input-sort" style="width: 70%">
+            <option value="newest" selected="true">Newest</option>
+            <option value="oldest">Oldest</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-detailType"><i class="fa fa-filter"></i> DetailType</label>
+        <select id="node-input-detailType" style="width: 70%">
+            <option value="simple" selected="true">Simple</option>
+            <option value="complete">Complete</option>
+        </select>
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="get-pocket">
@@ -20,6 +39,10 @@
         color: "#EEE",
         defaults: {
             pocket: { type: "pocket-auth", required: true },
+            search: { value: "input" },
+            tag: { value: false },
+            sort: { value: "newest" },
+            detailType: { value: "simple" },
         },
         inputs: 1,
         outputs: 1,
@@ -28,10 +51,10 @@
         label: 'Get Pocket',
         paletteLabel: 'Get Pocket',
         oneditprepare: function () {
-            
+
         },
         oneditsave: function () {
-            
+
         }
     });
 </script>
