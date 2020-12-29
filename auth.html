@@ -63,7 +63,7 @@
 
             $("#node-config-start-auth").mousedown(function () {
                 let consumerKey = $('#node-config-input-consumerKey').val();
-                var url = '/pocket/auth?id=' + id + '&consumerKey=' + consumerKey + "&callback=" + encodeURIComponent(callback);
+                var url = '/red/pocket/auth?id=' + id + '&consumerKey=' + consumerKey + "&callback=" + encodeURIComponent(callback);
 
                 $(this).attr("href", url);
             });
