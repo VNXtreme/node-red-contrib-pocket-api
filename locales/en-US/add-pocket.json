@@ -1,0 +1,16 @@
+{
+  "status": {
+    "initializing": "initializing",
+    "error": "error",
+    "failed": "failed"
+  },
+  "success": {
+    "add-pocket": "Added item successfully"
+  },
+  "error": {
+    "no-access-token": "No access token",
+    "missing-consumer-key": "Missing Pocket consumer key",
+    "url-required": "Please enter your url",
+    "add-pocket": "Error in adding item"
+  }
+}

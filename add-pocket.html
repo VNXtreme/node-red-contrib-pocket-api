@@ -1,0 +1,82 @@
+<script type="text/x-red" data-template-name="add-pocket">
+    <div class="form-row">
+        <label for="node-input-pocket"><i class="fa fa-user"></i> Pocket</label>
+        <input type="text" id="node-input-pocket">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-sign-out"></i> URL</label>
+        <input type="text" id="node-input-url">
+    </div>
+    <div class="form-row">
+        <label for="node-input-title"><i class="fa fa-envelope"></i> Title</label>
+        <input type="text" id="node-input-title">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tags"><i class="fa fa-tag"></i> Tags</label>
+        <input type="text" id="node-input-tags">
+    </div>
+    <div class="form-row">
+        <label for="node-input-tweet_id"><i class="fa fa-ellipsis-h"></i> Tweet ID</label>
+        <input type="text" id="node-input-tweet_id">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="add-pocket">
+    <p>Get pocket list.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">string</span>
+        </dt>
+        <dd>The URL of the item you want to save.</dd>
+
+        <dt>title
+            <span class="property-type">string (optional)</span>
+        </dt>
+        <dd>This can be included for cases where an item does not have a title, which is typical for image or PDF URLs. If Pocket detects a title from the content of the page, this parameter will be ignored.</dd>
+
+        <dt>tags
+            <span class="property-type">string (optional)</span>
+        </dt>
+        <dd>A comma-separated list of tags to apply to the item</dd>
+
+        <dt>tweet_id
+            <span class="property-type">string (optional)</span>
+        </dt>
+        <dd>If you are adding Pocket support to a Twitter client, please send along a reference to the tweet status id. This allows Pocket to show the original tweet alongside the article.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">object</span>
+        </dt>
+        <dd>Default response from API</dd>
+    </dl>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('add-pocket', {
+        category: 'box',
+        color: "#EEE",
+        defaults: {
+            pocket: { type: "pocket-auth", required: true },
+            url: { value: "" },
+            title: { value: "" },
+            tags: { value: "" },
+            tweet_id: { value: '' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "pocket.png",
+        align: "left",
+        label: 'Add Pocket',
+        paletteLabel: 'Add Pocket',
+        oneditprepare: function () {
+
+        },
+        oneditsave: function () {
+
+        }
+    });
+</script>
